@@ -21,5 +21,12 @@ describe('4th Deliverable', () => {
       const filteredPlants = queryAllByTestId('plant-item');
       expect(filteredPlants).toHaveLength(3);
     });
+
+    fireEvent.change(searchInput, { target: { value: '' } });
+
+    await waitFor(() => {
+      const allPlants = queryAllByTestId('plant-item');
+      expect(allPlants).toHaveLength(global.basePlants.length);
+    });
   });
 })
